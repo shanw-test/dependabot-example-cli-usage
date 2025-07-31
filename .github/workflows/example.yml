@@ -61,6 +61,21 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
+      - name: Create dependencies label
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          # 检查标签是否已存在
+          if ! gh label list | grep -q "dependencies"; then
+            # 不存在则创建标签，颜色 #0366d6 是 GitHub 官方 dependencies 标签的默认蓝色
+            gh label create "dependencies" \
+              --color "#0366d6" \
+              --description "Pull requests that update a dependency file"
+            echo "标签 'dependencies' 创建成功"
+          else
+            echo "标签 'dependencies' 已存在，无需创建"
+          fi
+          
       - name: Download result
         uses: actions/download-artifact@v4
         with:
