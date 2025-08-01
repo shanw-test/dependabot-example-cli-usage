@@ -43,7 +43,11 @@ jobs:
             -f repo/.github/dependabot/bundler.yml \
             --local repo \
             --timeout 20m >> result.jsonl || true
-
+          ./dependabot update \
+            -f repo/.github/dependabot/container.yml \
+            --local repo \
+            --timeout 20m >> result.jsonl || true
+            
       - name: Upload result
         uses: actions/upload-artifact@v4
         with:
