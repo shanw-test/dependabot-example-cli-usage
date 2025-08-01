@@ -9,7 +9,7 @@ job:
       update-type: all
   source:
     provider: github
-    repo: dependabot/example-cli-usage
+    repo: shanw-test/dependabot-example-cli-usage
     # looks absolute, but this is relative to the root of the repo
     directory: /docker-example
     branch: main
