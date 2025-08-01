@@ -4,7 +4,7 @@
 # See https://aka.ms/containerfastmode to understand how Visual Studio uses the first image for faster debugging.
 FROM mcr.microsoft.com/dotnet/aspnet:6.0 AS base
 
-FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
+FROM mcr.microsoft.com/dotnet/sdk:9.0 AS build
 
 FROM python:2.7
 
@@ -12,3 +12,4 @@ FROM base AS final
 
 RUN apt-get update && \
     apt-get upgrade -y
+
