@@ -6,9 +6,10 @@ FROM mcr.microsoft.com/dotnet/aspnet:6.0 AS base
 
 FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
 
-FROM python:2.7
+FROM python:3.13
 
 FROM base AS final
 
 RUN apt-get update && \
     apt-get upgrade -y
+
