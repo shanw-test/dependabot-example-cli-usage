@@ -1,13 +1,12 @@
-FROM node:14
+# syntax=docker/dockerfile:1.3
 
-WORKDIR /app
+# The first image is used by Visual Studio in container fast mode - this should be the base for the final image 
+# See https://aka.ms/containerfastmode to understand how Visual Studio uses the first image for faster debugging.
+FROM mcr.microsoft.com/dotnet/aspnet:6.0 AS base
 
-COPY package*.json ./
+FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
 
-RUN npm install
+FROM base AS final
 
-COPY . .
-
-EXPOSE 3000
-
-CMD ["npm", "start"]
+RUN apt-get update && \
+    apt-get upgrade -y
